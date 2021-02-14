@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap")
+    style 
+      include ./styles/style.css
+    title Document
+  body 
+    main.container 
+      h1 Russian Robotics 
+      h3 Добавить/Обновить
+      form(id="reviewForm")
+        input(type="hidden" id="hiddenId")
+        label(for="firstName") Ваше имя
+        input(type="text" id="firstName" placeholder="Имя")
+        label(for="lastName") Ваша фамилия
+        input(type="text" id="lastName" placeholder="Фамилия")
+        label(for="patronymic") Ваше отчество
+        input(type="text" id="patronymic" placeholder="Отчество")
+        label(for="dateOfBirth") Ваш день рождения
+        input(type="date" id="dateOfBirth" )
+
+        label(for="regDate") Дата регистрации
+        input(type="date" id="regDate" )
+        label(for="placeOfBirth") Ваше место рождения
+        input(type="text" id="placeOfBirth" placeholder="Где вы родились")
+        label(for="email") Ваша электронная почта
+        input(type="email" id="email" placeholder="Email")
+        label(for="phoneNumber") Ваш номер телефона
+        input(type="number" id="phoneNumber" placeholder="Номер телефона")
+        button(type="submit" class="btn btn-outline-success") Добавить/Обновить
+      .table-responsive 
+        table(class="table table-sm table__sort")
+          thead(class="text-center")
+            th(class="th__name") Имя
+            th День рождения
+            th Место рождения
+            th Email
+            th Номер телефона
+            th Дата регистрации
+            th Последнее посещение
+            th Действие
+            tbody(id="table__body" class="text-center") 
+    script(src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js") 
+    script(src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js")  
