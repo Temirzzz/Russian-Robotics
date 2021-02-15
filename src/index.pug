@@ -7,7 +7,7 @@ html(lang="en")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap")
     style 
       include ./styles/style.css
-    title Document
+    title Russian Robotics
   body 
     main.container 
       h1 Russian Robotics 
@@ -20,21 +20,20 @@ html(lang="en")
         input(type="text" id="lastName" placeholder="Фамилия")
         label(for="patronymic") Ваше отчество
         input(type="text" id="patronymic" placeholder="Отчество")
-        label(for="dateOfBirth") Ваш день рождения
+        label(for="dateOfBirth") День рождения
         input(type="date" id="dateOfBirth" )
-
         label(for="regDate") Дата регистрации
         input(type="date" id="regDate" )
-        label(for="placeOfBirth") Ваше место рождения
+        label(for="placeOfBirth") Место рождения
         input(type="text" id="placeOfBirth" placeholder="Где вы родились")
-        label(for="email") Ваша электронная почта
+        label(for="email") Электронная почта
         input(type="email" id="email" placeholder="Email")
-        label(for="phoneNumber") Ваш номер телефона
+        label(for="phoneNumber") Номер телефона
         input(type="number" id="phoneNumber" placeholder="Номер телефона")
-        button(type="submit" class="btn btn-outline-success") Добавить/Обновить
+        button(type="submit") Добавить/Обновить
       .table-responsive 
-        table(class="table table-sm table__sort")
-          thead(class="text-center")
+        table(class="table__sort")
+          thead
             th(class="th__name") Имя
             th День рождения
             th Место рождения

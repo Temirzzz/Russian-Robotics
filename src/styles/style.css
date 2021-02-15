@@ -84,9 +84,9 @@ form button {
 }
 
 form input {
-    width: 30%;
-    height: 30px;
-    min-width: 310px;
+    width: 20%;
+    height: 35px;
+    min-width: 300px;
     margin: 5px 0;
     padding: 3px;
     padding-left: 15px;
@@ -114,8 +114,8 @@ tr {
     text-align: center;
 }
 
-.delete__btn,
-.edit__btn {
+.delete-btn,
+.edit-btn {
     width: 140px;
     height: 35px;
     border-radius: 3px;
@@ -126,14 +126,14 @@ tr {
     border: none;
 }
 
-.edit__btn {
+.edit-btn {
     margin-top: -2px;
     background-color: #2F4F4F;
 }
 /* / table */
 
 /* remove-popup */
-.modal__window {
+.modal-window {
     position: fixed;
     top: 0;
     left: 0;
@@ -149,43 +149,118 @@ tr {
     padding: 0 10px;
     left: 50%;
     transform: translate(-50%);
-    width: 350px;
-    height: 150px;
+    min-width: 300px;
+    min-height: 150px;
     border-radius: 10px;
     background: #ffffff;
     z-index: 9;
 }
 
-.remove__btn,
-.close__btn {
+.remove-btn,
+.close-btn {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 5px;
+    top: -20px;
     border-radius: 50%;
     border: none;
     line-height: 20px;
     cursor: pointer;
+    font-size: 45px;
 }
 
-.remove__btn {
-    right: 5px;
-    background-color: #008000;
+.remove-btn {
+    right: -35px;
     color: #ffffff;
 }
 
-.close__btn {
-    left: 5px;
-    background-color: #e72a2a;
+.close-btn {
+    left: -35px;
     color: #ffffff;
+    font-size: 65px;
 }
 
 .item {
     position: absolute;
     text-align: center;
-    top: 30px;
+    top: 50px;
     left: 50%;
     transform: translate(-50%);
     font-size: 20px;
-    width: 175px;
+    min-width: 175px;
+}
+
+/* MEDIA */
+@media screen and (max-width: 1298px) {
+    .delete-btn,
+    .edit-btn {
+        margin: 2px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    table.table__sort {
+        border: 0;
+        min-width: 600px;
+    }
+    table.table__sort thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    table.table__sort tr {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        margin-bottom: 30px;
+    }
+    table.table__sort td {
+        display: block;
+        text-align: right;
+        margin-bottom: 5px;
+    }
+    table.table__sort td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    table.table__sort td:last-child {
+      border-bottom: 0;
+    }
+    .delete-btn,
+    .edit-btn {
+        width: 120px;
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+    .edit-btn {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    table.table__sort {
+        min-width: 320px;
+    }
+    table.table__sort td::before {
+        font-size: 10px;
+    }
+    .form button {
+        width: 180px;
+    }
+    .remove-btn {
+        top: -30px;
+        right: 0;
+    }
+    .close-btn {
+        top: -30px;
+        left: 0;
+    }
 }

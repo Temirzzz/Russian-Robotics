@@ -20,33 +20,41 @@ module.exports = {
 	module: {
 		rules: [
 			{
-			  test: /\.m?js$/,
-			  exclude: /(node_modules)/
-			},
-			{
-			  test: /\.css$/i,
-			  use: 'css-loader',
-			},
-			{
-			  test: /\.scss$/i,
-			  use: [
-				'css-loader', 
-				'sass-loader'
-			  ],
-			},
-			{
-			  test: /\.pug$/,
-			  loaders: [
-				{
-				  loader: "html-loader"
+				test: /\.(png|jpe?g|gif)$/i,
+				loader: 'file-loader',
+				options: {
+				  outputPath: './src/images',
 				},
-				{
-				  loader: "pug-html-loader",
-				  options: {
-					"pretty":true
-				  }
+			},
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules)/
+			},
+			{
+				test: /\.css$/i,
+				use: 'css-loader',
+			},
+			{
+				test: /\.scss$/i,
+				use: [
+					'css-loader', 
+					'sass-loader'
+				],
+			},
+			{
+				test: /\.pug$/,
+				loaders: [
+					{
+					loader: "html-loader"
+					},
+					{
+					loader: "pug-html-loader",
+					options: {
+						"pretty":true
+					}
 				}
 			]
+			
 		}]
   	},
 }

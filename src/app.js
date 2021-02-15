@@ -1,5 +1,5 @@
 import { firebaseConfig } from './config/config'
-import { emptyDatasAlert, successAlert, tableSort, deletePopup, closePopup } from './utils/utils'
+import { emptyDatasAlert, successAlert, tableSort, deletePopup, closePopup, numberInputLenght } from './utils/utils'
 
 // GLOBAL VARIABLES
 let db = firebase.database()
@@ -17,6 +17,7 @@ let phoneNumber = document.querySelector('#phoneNumber')
 let regDate = document.querySelector('#regDate')
 let lastVisitTime = new Date().toLocaleString()
 
+
 // CREATE DATAS
 tableForm.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -24,6 +25,10 @@ tableForm.addEventListener('submit', (e) => {
   if (!firstName.value || !lastName.value || !patronymic.value|| !dateOfBirth.value || !dateOfBirth.value || !placeOfBirth.value|| !email.value|| !phoneNumber.value) {
     emptyDatasAlert()
     return null 
+  }
+  if (phoneNumber.value.length < 9) {
+    numberInputLenght()
+    return null
   }
 
   let id = hiddenId.value || Date.now() 
@@ -55,6 +60,8 @@ tableForm.addEventListener('submit', (e) => {
   email.value  = ''
   phoneNumber.value  = ''
 
+  
+
   successAlert()
 })
 
@@ -83,15 +90,15 @@ tableBody.addEventListener('click', (e) => {
   let reviewNode = e.target.parentNode
 
   // UPDATE TABLE
-  if (e.target.classList.contains('edit__btn')) {
+  if (e.target.classList.contains('edit-btn')) {
     hiddenId.value = reviewNode.id
 
-    firstName.value = reviewNode.querySelector('.firstName').innerText
-    dateOfBirth.value  = reviewNode.querySelector('.dateOfBirth').innerText
-    placeOfBirth.value  = reviewNode.querySelector('.placeOfBirth').innerText
-    regDate.value  = reviewNode.querySelector('.regDate').innerText
+    firstName.value = reviewNode.querySelector('.initials').innerText
+    dateOfBirth.value  = reviewNode.querySelector('.date-of-birth').innerText
+    placeOfBirth.value  = reviewNode.querySelector('.place-of-birth').innerText
     email.value  = reviewNode.querySelector('.email').innerText
-    phoneNumber.value  = reviewNode.querySelector('.phoneNumber').innerText
+    phoneNumber.value  = reviewNode.querySelector('.phone-number').innerText
+    regDate.value  = reviewNode.querySelector('.registr-date').innerText
 
     // LASTVISITTIME
     let curentTd = e.target.parentNode.children[6]
@@ -101,32 +108,32 @@ tableBody.addEventListener('click', (e) => {
   }
 
   // DELETE TABLE
-  if (e.target.classList.contains('delete__btn')) {
+  if (e.target.classList.contains('delete-btn')) {
     deletePopup()
   }
 
-  document.querySelector('.remove__btn').onclick = () => {
+  document.querySelector('.remove-btn').onclick = () => {
     let id = reviewNode.id
     db.ref('data/' + id).remove()
     closePopup()
     return false
   }
-  document.querySelector('.close__btn').onclick = closePopup
+  document.querySelector('.close-btn').onclick = closePopup
 
 })
 
 const reviewTemplate = ({firstNameUpp, lastnameTrimed, patronymicTrimed, dateOfBirth, placeOfBirth, email, phoneNumber, regDate}) => {
 
   return `
-    <td class='firstName'>${lastnameTrimed + ' '}${firstNameUpp}${patronymicTrimed}</td>    
-    <td class='dateOfBirth'>${dateOfBirth}</td>
-    <td class='placeOfBirth'>${placeOfBirth}</td>
-    <td class='email'>${email}</td>
-    <td class='phoneNumber'>${phoneNumber}</td>
-    <td class='regDate'>${regDate}</td>
-    <td class='lastVizit'></td>
-    <button class='delete__btn btn-outline-danger'>Удалить</button>
-    <button class='edit__btn btn btn-outline-warning'>Редактировать</button>
+    <td class='initials' data-label='ФИО'>${lastnameTrimed + ' '}${firstNameUpp}${patronymicTrimed}</td>    
+    <td class='date-of-birth' data-label='День рождения'>${dateOfBirth}</td>
+    <td class='place-of-birth' data-label='Место рождения'>${placeOfBirth}</td>
+    <td class='email' data-label='Электронная почта'>${email}</td>
+    <td class='phone-number' data-label='Номер телефона'>${phoneNumber}</td>
+    <td class='registr-date' data-label='Дата регистрации'>${regDate}</td>
+    <td class='last-vizit' data-label='Последнее посещение'></td>
+    <button class='delete-btn'>Удалить</button>
+    <button class='edit-btn'>Редактировать</button>
   `
 };
 
