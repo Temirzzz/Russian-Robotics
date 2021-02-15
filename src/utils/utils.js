@@ -90,7 +90,7 @@ export const deletePopup = () => {
 }
 
 // REMOVING MODAL WINDOW
-export const closePopup = () => {
+export const closePopup = (e) => {
     document.querySelector('.modal-window').remove()
 }
 

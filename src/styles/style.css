@@ -74,7 +74,7 @@ form {
 form button {
     width: 200px;
     height: 40px;
-    margin: 10px 0 20px;
+    margin: 20px 0 10px;
     color: #ffffff;
     border: none;
     border-radius: 3px;
@@ -250,6 +250,9 @@ tr {
         min-width: 320px;
     }
     table.table__sort td::before {
+        font-size: 10px;
+    }
+    tr {
         font-size: 10px;
     }
     .form button {

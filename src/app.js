@@ -17,6 +17,21 @@ let phoneNumber = document.querySelector('#phoneNumber')
 let regDate = document.querySelector('#regDate')
 let lastVisitTime = new Date().toLocaleString()
 
+// PROHIBITION OF NUMBER
+firstName.onkeypress = (e) => {
+  if ("1234567890".indexOf(e.key) != -1)
+  e.preventDefault()
+}
+
+lastName.onkeypress = (e) => {
+  if ("1234567890".indexOf(e.key) != -1)
+  e.preventDefault()
+}
+
+patronymic.onkeypress = (e) => {
+  if ("1234567890".indexOf(e.key) != -1)
+  e.preventDefault()
+}
 
 // CREATE DATAS
 tableForm.addEventListener('submit', (e) => {
@@ -37,7 +52,6 @@ tableForm.addEventListener('submit', (e) => {
   let firstNameUpp = firstName.value.trim().substr(0,1).toUpperCase() + '.'
   let patronymicTrimed = patronymic.value.trim().substr(0,1).toUpperCase() + '.'
   
-
   db.ref('data/' + id).set({
     firstNameUpp: firstNameUpp.trim(),
     lastnameTrimed: lastnameTrimed.trim(),
@@ -59,8 +73,6 @@ tableForm.addEventListener('submit', (e) => {
   placeOfBirth.value = ''
   email.value  = ''
   phoneNumber.value  = ''
-
-  
 
   successAlert()
 })
