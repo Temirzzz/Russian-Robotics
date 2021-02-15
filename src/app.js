@@ -79,7 +79,7 @@ tableForm.addEventListener('submit', (e) => {
 
 // READ TABLE
 let tableBody = document.getElementById('table__body');
-let reviewsRef = db.ref('/data');
+let reviewsRef = db.ref('data/');
 
 reviewsRef.on('child_added', (data) => {
   let item = document.createElement('tr')
