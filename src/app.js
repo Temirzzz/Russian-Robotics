@@ -19,17 +19,17 @@ let lastVisitTime = new Date().toLocaleString()
 
 // PROHIBITION OF NUMBER
 firstName.onkeypress = (e) => {
-  if ("1234567890".indexOf(e.key) != -1)
+  if ('0123456789'.indexOf(e.key) != -1)
   e.preventDefault()
 }
 
 lastName.onkeypress = (e) => {
-  if ("1234567890".indexOf(e.key) != -1)
+  if ('0123456789'.indexOf(e.key) != -1)
   e.preventDefault()
 }
 
 patronymic.onkeypress = (e) => {
-  if ("1234567890".indexOf(e.key) != -1)
+  if ('0123456789'.indexOf(e.key) != -1)
   e.preventDefault()
 }
 
